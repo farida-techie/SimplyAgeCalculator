@@ -41,10 +41,15 @@ class MainActivity : AppCompatActivity() {
                 calsiBtn.setOnClickListener {
                     val currentYear = Calendar.getInstance()
                         .get(Calendar.YEAR)
-                    val age = currentYear - cYear
-                    showAge.visibility = View.VISIBLE
-                    showAge.text = "Your Age is $age year"
-                    textMassge("Your Age is $age year")
+                   if (cYear>currentYear){
+                       textMassge("Date is not valid")
+                   }
+                    else{
+                       val age = currentYear - cYear
+                       showAge.visibility = View.VISIBLE
+                       showAge.text = "Your Age is $age year"
+                       textMassge("Your Age is $age year")
+                   }
                 }
                 selectDate.text = "You select Date :$cDay/${cMonth+1}/$cYear"
             },cYear,cMonth,cDay)
